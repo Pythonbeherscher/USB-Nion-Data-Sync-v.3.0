@@ -6,7 +6,7 @@ import os
 import sys
 import tkinter as tk
 from tkinter import ttk, messagebox
-from Controller.controller import USBController  # Import main class
+from controller import USBController  # Import main class
 
 ####################### ===== main ===== #######################
 def main():
