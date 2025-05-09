@@ -29,7 +29,7 @@ class USBView:
                         cursor='hand2')  # add the "hand" cursor
                         
         # Expanded window (maximized)
-              self.root.state('zoomed')  # for Windows
+        self.root.state('zoomed')  # for Windows
 
         # Setting up a grid for a responsive interface
         self.root.grid_columnconfigure(0, weight=1)
