@@ -1,6 +1,6 @@
 # 1. installing a virtual environment   python -m venv venv
 # 2. activation                         venv\Scripts\activate 
-# 3. Installing libraries                pip install ... (psutil, sv_ttk)                                                                                                         )
+# 3. Installing libraries               pip install ... (psutil, sv_ttk)                                                                                                         )
 
 import os
 import sys
