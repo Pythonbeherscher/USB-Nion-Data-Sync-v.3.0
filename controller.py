@@ -4,8 +4,8 @@ import shutil
 import threading
 import tkinter as tk
 from tkinter import ttk
-from View.view import USBView
-from Model.model import USBModel
+from view import USBView
+from model import USBModel
 from datetime import datetime
 
 ####################### ===== USBController ===== #######################
