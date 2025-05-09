@@ -5,7 +5,7 @@ import shutil
 import psutil
 import threading
 from tkinter import *
-from BackupManager.backupManager import BackupManager
+from backupManager import BackupManager
 
 ####################### ===== USBModel ===== #######################
 class USBModel:
