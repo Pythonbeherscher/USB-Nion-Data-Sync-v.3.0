@@ -23,7 +23,7 @@ class USBView:
         self.menubar = Menu(self.root)
         self.root.config(menu=self.menubar)
         
-        # Меню File
+        # Menu File
         file_menu = Menu(self.menubar, tearoff=0)
         file_menu.add_command(label="Refresh Devices", command=self.controller.manual_refresh)
         file_menu.add_command(label="Start Transfer", command=self.controller.start_transfer)
@@ -33,7 +33,7 @@ class USBView:
         file_menu.add_command(label="Exit", command=self.root.quit)
         self.menubar.add_cascade(label="File", menu=file_menu)
         
-        # Меню View
+        # Menu View
         view_menu = Menu(self.menubar, tearoff=0)
         view_menu.add_command(label="View Backups", command=self.controller.show_backup_history)
         view_menu.add_command(label="Clear Log", command=self.clear_terminal)
