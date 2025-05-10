@@ -4,7 +4,7 @@ import sv_ttk
 import subprocess
 import tkinter as tk
 from datetime import datetime
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, Menu
 
 ####################### ===== USBView ===== #######################
 class USBView:
@@ -18,8 +18,31 @@ class USBView:
         self.root.geometry("1000x700")
         self.root.minsize(1000, 830)  # Minimum window dimensions
         self.root.iconbitmap("usb.ico")
-        # self.icon = tk.PhotoImage(file="icon.png")
-        # self.root.iconphoto(False, self.icon)
+
+        # Create the main menu
+        self.menubar = Menu(self.root)
+        self.root.config(menu=self.menubar)
+        
+        # Меню File
+        file_menu = Menu(self.menubar, tearoff=0)
+        file_menu.add_command(label="Refresh Devices", command=self.controller.manual_refresh)
+        file_menu.add_command(label="Start Transfer", command=self.controller.start_transfer)
+        file_menu.add_command(label="Start Backup", command=self.controller.start_backup)
+        file_menu.add_command(label="Start Sync with Backup", command=self.controller.start_sync_with_backup)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=self.root.quit)
+        self.menubar.add_cascade(label="File", menu=file_menu)
+        
+        # Меню View
+        view_menu = Menu(self.menubar, tearoff=0)
+        view_menu.add_command(label="View Backups", command=self.controller.show_backup_history)
+        view_menu.add_command(label="Clear Log", command=self.clear_terminal)
+        self.menubar.add_cascade(label="View", menu=view_menu)
+        
+        # Menu Help
+        help_menu = Menu(self.menubar, tearoff=0)
+        help_menu.add_command(label="About", command=self.show_about)
+        self.menubar.add_cascade(label="Help", menu=help_menu)
 
         self.style = ttk.Style()
             # Style for regular buttons
@@ -224,6 +247,21 @@ class USBView:
         self.clear_terminal_btn = ttk.Button(terminal_frame, text="Clear Log", command=self.clear_terminal)
         self.clear_terminal_btn.grid(row=1, column=0, sticky="e", pady=(15, 0))
 
+    def show_about(self):
+        """Показывает окно 'О программе'"""
+        about_window = tk.Toplevel(self.root)
+        about_window.title("About Neon Data Sync")
+        about_window.geometry("400x300")
+        about_window.resizable(False, False)
+        
+        ttk.Label(about_window, text="Neon Data Sync v3.0", font=('Courier New', 16, 'bold')).pack(pady=20)
+        ttk.Label(about_window, text="USB Data Transfer and Backup Tool").pack(pady=10)
+        ttk.Label(about_window, text="Copyright © 2025").pack(pady=10)
+        ttk.Label(about_window, text="All rights reserved").pack(pady=10)
+        
+        close_btn = ttk.Button(about_window, text="Close", command=about_window.destroy)
+        close_btn.pack(pady=20)
+    
     def clear_terminal(self):
         self.terminal.delete(1.0, tk.END)
 
